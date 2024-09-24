@@ -1,0 +1,3 @@
+source "components/drivers_ext/Kconfig"
+source "components/libraries/Kconfig"
+source "components/profiles/Kconfig"

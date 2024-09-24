@@ -1,0 +1,4 @@
+
+
+source "external/Kconfig.segger_rtt"
+source "external/Kconfig.freertos"

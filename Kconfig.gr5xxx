@@ -1,0 +1,392 @@
+
+
+
+menu "Basic configuration"
+
+config APPLICATION_NAME
+    string "Application Project Name"
+    default "gr_sdk_temp"
+
+config GR5515_SOC
+    bool "GR5515 Chip"
+    default y
+    default n if CHIP_SOC=0
+
+config GR5513_SOC
+    bool "GR5513 Chip"
+    default n
+    default y if CHIP_SOC=0 && CHIP_TYPE>5
+
+config GR5525_SOC
+    bool "GR5525 Chip"
+    default n
+    default y if CHIP_SOC=1
+
+config GR5526_SOC
+    bool "GR5526 Chip"
+    default n
+    default y if CHIP_SOC=2
+
+config GR533X_SOC
+    bool "GR533X Chip"
+    default n
+    default y if CHIP_SOC=3
+
+config GR5405_SOC
+    bool "GR5405 Chip"
+    default n
+    default y if CHIP_SOC=4
+
+config CHIP_SOC
+    int "Chip version"
+    default 0
+    range 0 4
+    help
+      0 -> GR551X
+      1 -> GR5525
+      2 -> GR5526
+      3 -> GR533X
+      4 -> GR5405
+
+if CHIP_SOC=0
+
+config CHIP_TYPE
+    int "GR5515 Chip version"
+    default 4
+    range 0 7
+    help
+      0=> GR5515IGND
+      1=> GR5515IENDU
+      2=> GR5515I0ND
+      3=> GR5515I0NDA
+      4=> GR5515RGBD
+      5=> GR5515GGBD
+      6=> GR5513BEND
+      7=> GR5513BENDU
+
+endif
+
+if CHIP_SOC=3
+
+config CHIP_TYPE
+    int "GR533X Chip version"
+    default 4
+    range 0 4
+    help
+      0=> GR5330ACNI
+      1=> GR5331AENI
+      2=> GR5331CENI
+      3=> GR5332AENE
+      4=> GR5332CENE
+      
+endif
+
+config ENCRYPT_ENABLE
+    int "Enable encrypt chip"
+    default 0
+    range 0 1
+
+config EXT_EXFLASH_ENABLE
+    int "Enable the external flash of chip"
+    default 0
+    range 0 1
+
+config PLATFORM_INIT_ENABLE
+    int "Enable the platform initialization process"
+    default 1
+    range 0 1
+
+config SYS_FAULT_TRACE_ENABLE
+    int "Enable system fault trace module"
+    default 1
+    range 0 1
+
+config ENABLE_BACKTRACE_FEA
+    int "Enable callstack backtrace function"
+    default 0
+    range 0 1
+
+config APP_DRIVER_USE_ENABLE
+    int "Enable APP driver module"
+    default 1
+    range 0 1
+
+config APP_LOG_ENABLE
+    int "Eanble APP log module"
+    default 1
+    range 0 1
+
+config APP_LOG_PORT
+    int "APP log port type"
+    range 0 2
+    default 0
+     0=> UART
+     1=> RTT
+     2=> ITM
+
+config APP_LOG_STORE_ENABLE
+    int "Eanble APP log store module"
+    default 0
+    range 0 1
+
+if CHIP_TYPE=4
+
+config SK_GUI_ENABLE
+    int "Enable SK GUI module, only available in GR5515"
+    default 1
+    range 0 1
+
+endif
+
+config DEBUG_MONITOR
+    int "Enable debug monitor module"
+    default 0
+    range 0 1
+
+config DTM_TEST_ENABLE
+    int "Enable DTM test support"
+    default 0
+    range 0 1
+
+config FLASH_PROTECT_PRIORITY
+    int "Protection priority level"
+    default 0
+    range 0 1
+
+config NVDS_START_ADDR
+    hex "NVDS Start Address"
+    default 0x010FF000
+    default 0x0107F000 if CHIP_TYPE=1 || CHIP_TYPE=6 || CHIP_TYPE=7
+
+config NVDS_NUM_SECTOR
+    int "The Number of sectors for NVDS"
+    default 1
+    range 1 16
+
+config SYSTEM_STACK_SIZE
+    hex "Call Stack Size"
+    default 0x4000
+
+config SYSTEM_HEAP_SIZE
+    hex "Call Heap Size"
+    default 0x1000
+
+endmenu
+
+menu "Boot info configuration"
+
+config CHIP_VER
+    hex "Chip version"
+    default 0x5515
+    help
+      0x5515 -> GR551X
+      0x5525 -> GR5525
+      0x5526 -> GR5526
+      0x5332 -> GR533X   
+
+config APP_CODE_LOAD_ADDR
+    hex "Code load address"
+    default 0x01002000
+    help
+      0x30004100=> SRAM address
+      0x01002000=> Flash address
+
+config APP_CODE_RUN_ADDR
+    hex "Code run address"
+    default 0x01002000
+    help
+      0x30004100=> SRAM address
+      0x01002000=> Flash address
+
+config SYSTEM_CLOCK
+    int "System clock"
+    default 0
+    help
+      0=> 64MHZ
+      1=> 48MHZ
+      2=> 16MHZ-XO
+      3=> 24MHZ
+      4=> 16MHZ
+      5=> 32MHZ-CPLL
+
+config CFG_LF_ACCURACY_PPM
+    int "External clock accuracy used in the LL to compute timing"
+    default 500
+    range 1 500
+
+config CFG_LPCLK_INTERNAL_EN
+    int "Enable internal osc as low power clock"
+    default 0
+    range 0 1
+    help
+      0=> Default: Disable internal osc as low power clock
+      1=> Enable internal osc as low power clock and force CFG_LF_ACCURACY_PPM to 500ppm
+
+config CFG_CRYSTAL_DELAY
+    int "Delay time for Crystal stabilization time"
+    default 100
+    range 100 500
+
+config BOOT_LONG_TIME
+    int "Delay time for Boot startup"
+    default 1
+    range 0 1
+    help
+      0=> Not Delay
+      1=> Delay 1s
+
+config BOOT_CHECK_IMAGE
+    int "In xip mode, check image during cold boot startup"
+    default 1
+    range 0 1
+    help
+      0=> Not check
+      1=> Check image
+
+config EXFLASH_WAKEUP_DELAY
+    int "Delay time between flash wakeup and read chip id in warm boot"
+    default 0
+    range 0 10
+    help
+      0=>  No delay
+      1=>  Delay 5 us
+      2=>  Delay 10 us
+      3=>  Delay 15 us
+      4=>  Delay 20 us
+      5=>  Delay 25 us
+      6=>  Delay 30 us
+      7=>  Delay 35 us
+      8=>  Delay 40 us
+      9=>  Delay 45 us
+      10=> Delay 50 us
+
+
+endmenu
+
+menu "BLE resource configuration"
+
+config CFG_MAX_PRFS
+    int "Support maximum number of BLE profiles"
+    default 10
+    range 1 64
+
+config CFG_MAX_BOND_DEVS
+    int "Support maximum number of bonded devices"
+    default 4
+
+config CFG_SCAN_DUP_FILT_LIST_NUM
+    int "Support the configuration of the number of scan duplicate filter lists"
+    default 0
+    range 0 50
+
+config CFG_MAX_CONNECTIONS
+    int "Support maximum number of BLE Links"
+    default 5
+    range 1 10
+
+config CFG_MAX_ADVS
+    int "Support maximum number of BLE Legacy/Extended Advertisings"
+    default 1
+    range 0 5
+
+config CFG_MAX_ADV_DATA_LEN_SUPPORT
+    int "Support 31 bytes adv data for legacy adv"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+config CFG_MAX_PER_ADVS
+    int "Support maximum number of BLE Periodic Advertisings"
+    default 0
+    range 0 5
+
+config CFG_MAX_SYNCS
+    int "Support maximum number of BLE Periodic Advertising Synchronizations"
+    default 0
+    range 0 5
+
+config CFG_MAX_SCAN
+    int "Support maximum number of BLE Scan"
+    default 1
+    range 0 1
+
+config CFG_BT_BREDR
+    int "Support BT-BR/EDR"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+config CFG_MUL_LINK_WITH_SAME_DEV
+    int "Support multiple link with the same device"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+config CFG_CAR_KEY_SUPPORT
+    int "Support car key needs"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+config CFG_MAX_EATT_CHANNELS
+    int "Support maximum number of BLE EATT Channels"
+    default 0
+    range 0 10
+
+config CFG_ISO_SUPPORT
+    int "Support ISO"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+endmenu
+
+menu "MESH support configuration"
+
+config CFG_MESH_SUPPORT
+    int "Support MESH"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT
+
+endmenu
+
+menu "LCP support configuration"
+
+config CFG_LCP_SUPPORT
+    int "Support LCP"
+    default 0
+    range 0 1
+    help
+      0=> NOT SUPPORT
+      1=> SUPPORT 
+
+endmenu
+
+menu "Security configuration"
+
+config SECURITY_CFG_VAL
+    int "Algorithm security level"
+    default 0
+    range 0 1
+    help
+      0=> Enable algorithm level one
+      1=> Enable algorithm level two
+
+endmenu
+
+source "components/Kconfig"
+source "drivers/Kconfig"
+source "external/Kconfig"

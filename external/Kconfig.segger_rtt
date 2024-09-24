@@ -1,0 +1,6 @@
+menu "RTT Config"
+
+config SEGGER_RTT
+    bool ""
+    
+endmenu

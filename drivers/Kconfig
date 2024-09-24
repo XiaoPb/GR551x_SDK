@@ -1,0 +1,133 @@
+
+
+config ADC_DMA
+    bool "Analog-to-Digital Converter (ADC) DMA drivers"
+    default y
+    depends on ADC
+    select DMA
+
+config ADC
+    bool "Analog-to-Digital Converter (ADC) drivers"
+    default n
+    select GPIO
+    
+config AON_WDT
+    bool "Watchdog drivers"
+    default n
+    
+config BOD
+    bool "BOD drivers"
+    default n
+    
+config COMP
+    bool "COMP drivers"
+    default n
+    
+config DMA
+    bool "Direct Memory Access (DMA) drivers"
+    default n
+    
+config DUAL_TIM
+    bool "Dual timer drivers"
+    default n
+    
+config GRAPHICS_QSPI
+    bool "Graphics qspi drivers"
+    default n
+    
+config I2C_DMA
+    bool "I2C DMA drivers"
+    default y
+    depends on I2C
+    select DMA
+
+config I2C
+    bool "I2C drivers"
+    default n
+    select GPIO
+    
+config I2S_DMA
+    bool "I2S DMA drivers"
+    default y
+    depends on I2S
+    select DMA
+
+config I2S
+    bool "I2S drivers"
+    default n
+    select GPIO
+    
+config GPIO
+    bool "GPIO drivers"
+    default y
+    
+config ISO7816
+    bool "ISO7816(SIM) Card drivers"
+    
+config PWM_DMA
+    bool "PWM DMA drivers"
+    default y
+    depends on PWM
+    select DMA
+
+config PWM
+    bool "PWM drivers"
+    default n
+    select GPIO
+
+config PWR_MGMT
+    bool "Pwr mgmt drivers"
+    default y
+    
+config QSPI_DMA
+    bool "QSPI DMA drivers"
+    default y
+    depends on QSPI
+    select DMA    
+
+config QSPI
+    bool "QSPI drivers"
+    default n
+    select GPIO
+
+config RNG
+    bool "RNG drivers"
+    default n
+    
+config RTC
+    bool "RTC drivers"
+    default n
+    
+config RTOS_CFG
+    bool "RTOS config drivers"
+    default n
+    
+config SOFT_ENCODER
+    bool "Soft encoder drivers"
+    default n
+    
+config SPI_DMA
+    bool "SPI DMA drivers"
+    default y
+    depends on SPI
+    select DMA
+
+config SPI
+    bool "SPI drivers"
+    default n
+    select GPIO
+
+config TIM
+    bool "Tim drivers"
+    
+config UART_DMA
+    bool "UART DMA drivers"
+    default y
+    depends on UART
+    select DMA
+
+config UART
+    bool "UART drivers"
+    default y
+    select GPIO
+    

@@ -1,0 +1,3 @@
+mainmenu "GR5xxx SDK Configuration"
+
+source "Kconfig.gr5xxx"

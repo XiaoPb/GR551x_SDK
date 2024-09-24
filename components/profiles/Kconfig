@@ -1,0 +1,195 @@
+
+
+menu "Ble Profiles"
+config AGS
+    bool "Alexa Gadgets Service"
+	depends on BLE_COMMON
+
+config AMS_CLIENT
+    bool "Apple Media Service Client"
+	depends on BLE_COMMON
+
+config ANCS_CLIENT
+    bool "Apple Notification Center Service"
+	depends on BLE_COMMON
+
+config ANS
+    bool "Alert Notification Service"
+	depends on BLE_COMMON
+
+config ANS_CLIENT
+    bool "Alert Notification Service Client"
+	depends on BLE_COMMON
+
+config BAS
+    bool "Battery Service"
+	depends on BLE_COMMON
+
+config BAS_CLIENT
+    bool "Battery Service Client"
+	depends on BLE_COMMON
+
+config BCS
+    bool "Body Composition Service"
+	depends on BLE_COMMON
+
+config BPS
+    bool "Blood Pressure Service"
+	depends on BLE_COMMON
+
+config BLE_COMMON
+    bool "Ble utils and types"
+	default y
+
+config CSCS
+    bool "Cycling Speed and Cadence Service"
+	depends on BLE_COMMON
+
+config CTS
+    bool "Current Time Service"
+	depends on BLE_COMMON
+
+config CTS_CLIENT
+    bool "Current Time Service Client"
+	depends on BLE_COMMON
+
+config DIS
+    bool "Device Information Service"
+	depends on BLE_COMMON
+
+config DIS_CLIENT
+    bool "Device Information Service Client"
+	depends on BLE_COMMON
+
+config DSS
+    bool "Device Synchronize Service"
+	depends on BLE_COMMON
+
+config GLS
+    bool "Glucose Service"
+	depends on BLE_COMMON
+
+config GUS
+    bool "Goodix UART Service"
+	depends on BLE_COMMON
+
+config GUS_CLIENT
+    bool "Goodix UART Service Client"
+	depends on BLE_COMMON
+
+config HIDS
+    bool "Human Interface Device Service"
+	depends on BLE_COMMON
+
+config HRRCPS
+    bool "HRS RSCS Relay Control Point Service"
+	depends on BLE_COMMON
+
+config HRS
+    bool "Heart Rate Service"
+	depends on BLE_COMMON
+
+config HRS_CLIENT
+    bool "Heart Rate Service Client"
+	depends on BLE_COMMON
+
+config HTS
+    bool "Health Thermometer Service"
+	depends on BLE_COMMON
+
+config IAS
+    bool "Immediate Alarm Service"
+	depends on BLE_COMMON
+
+config IAS_CLIENT
+    bool "Immediate Alert Service Client"
+	depends on BLE_COMMON
+
+config LLS
+    bool "Link Loss Service"
+	depends on BLE_COMMON
+
+config LLS_CLIENT
+    bool "Link Loss Service Client"
+	depends on BLE_COMMON
+
+config LMS
+    bool "Log Management Service"
+	depends on BLE_COMMON
+
+config LNS
+    bool "Log Notification Service"
+	depends on BLE_COMMON
+
+config MLMR
+    bool "Multi Link Multi Role Service"
+	depends on BLE_COMMON
+
+config MLMR_CLIENT
+    bool "Multi Link Multi Role Service Client"
+	depends on BLE_COMMON
+
+config NDCS
+    bool "Next DST Change Service"
+	depends on BLE_COMMON
+
+config OTAS
+    bool "Over The Air Service"
+	depends on BLE_COMMON
+
+config OTAS_CLIENT
+    bool "Over The Air Service Client"
+	depends on BLE_COMMON
+
+config PASS
+    bool "Phone Alert Status Service"
+	depends on BLE_COMMON
+
+config PASS_CLIENT
+    bool "Phone Alert Status Service Client"
+	depends on BLE_COMMON
+
+config PCS
+    bool "Power Consumption Service"
+	depends on BLE_COMMON
+
+config RSCS
+    bool "Running Speed and Cadence Service"
+	depends on BLE_COMMON
+
+config RSCS_CLIENT
+    bool "Running Speed and Cadence Service Client"
+	depends on BLE_COMMON
+
+config RTUS
+    bool "Reference Time Update Service"
+	depends on BLE_COMMON
+
+config SAMPLE_SERVICE
+    bool "Sample Service"
+	depends on BLE_COMMON
+
+config THS
+    bool "Throughput Service"
+	depends on BLE_COMMON
+
+config THS_CLIENT
+    bool "Throughput Client"
+	depends on BLE_COMMON
+
+config TPS
+    bool "Tx Power Service"
+	depends on BLE_COMMON
+
+config TPS_CLIENT
+    bool "Tx Power Service Client"
+	depends on BLE_COMMON
+
+config UDS
+    bool "User Data Service"
+	depends on BLE_COMMON
+
+config WSS
+    bool "Weight Scale Services"
+	depends on BLE_COMMON
+endmenu

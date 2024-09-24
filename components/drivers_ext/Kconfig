@@ -1,0 +1,19 @@
+
+menu "GR5xxx Drivers External"
+config MEASURE_MUX_SIGNAL
+    bool "gr5xxx measure mux signal"
+	depends on ADC
+
+config SPI_FLASH
+    bool "gr5xxx spi flash"
+	depends on SPI
+    depends on QSPI
+
+config TIM_DELAY
+    bool "gr5xxx tim delay"
+	depends on TIM
+
+config ST7735_DRIVER
+    bool "Apple Media Service Client"
+	depends on SPI
+endmenu

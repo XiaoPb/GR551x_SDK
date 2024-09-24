@@ -1,0 +1,104 @@
+
+menu "Libraries"
+
+config APP_ALARM
+    bool ""
+
+config APP_ASSERT
+    bool ""
+    default y
+
+config APP_CRYPTO
+    bool ""
+
+config APP_ERROR
+    bool ""
+    default y
+
+config APP_KEY
+    bool ""
+    default y
+
+config APP_LINKED_LIST
+    bool ""
+
+config APP_LOG
+    bool ""
+    default y
+
+config APP_MEMORY
+    bool ""
+
+config APP_QUEUE
+    bool ""
+
+config APP_SCHEDULER
+    bool ""
+
+config APP_TIMER
+    bool ""
+    default y
+
+config AT_CMD
+    bool ""
+
+config BLE
+    bool ""
+
+config CMSIS
+    bool ""
+
+config CRYPTO_LIB
+    bool ""
+
+config DFU_MASTER
+    bool ""
+
+config DFU_PORT
+    bool ""
+
+config FAULT_TRACE
+    bool ""
+    default y
+
+config FCC
+    bool ""
+
+config GUI
+    bool ""
+
+config HAL_FLASH
+    bool ""
+    default y
+
+config HCI_UART
+    bool ""
+    default n
+    
+config PMU_CALIBRATION
+    bool ""
+    default y
+
+config RING_BUFFER
+    bool ""
+    default y
+
+config SENSORSIM
+    bool ""
+
+config USER_EFUSE
+    bool ""
+
+config UTILITY
+    bool ""
+    default y
+
+config VHCI
+    bool ""
+    
+
+config VIRT_KEY
+    bool ""
+
+
+endmenu
