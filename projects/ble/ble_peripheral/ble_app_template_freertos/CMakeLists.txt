@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.20.0)
 
 find_package(Sdk REQUIRED HINTS $ENV{SDK_BASE})
 
-project(ble_app_hrs)
+project(ble_app_template_freertos)
 
 target_sources(app PRIVATE
     Src/platform/user_periph_setup.c
     Src/user/user_app.c
     Src/user/main.c
+    # Src/user/watcher.c
 )
 
 sdk_include_directories(

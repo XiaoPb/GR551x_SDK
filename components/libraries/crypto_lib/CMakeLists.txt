@@ -1,8 +1,8 @@
-# sdk_library()
-# sdk_include_directories(
+sdk_library()
+sdk_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )
-application_sources(
+sdk_library_sources(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto_aes.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto_ecc_port.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto_ecc.c
@@ -13,4 +13,4 @@ application_sources(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto_rsa.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/crypto_sha256.c
 )
-# target_link_libraries(sdk PUBLIC ${SDK_CURRENT_LIBRARY})
+target_link_libraries(sdk PUBLIC ${SDK_CURRENT_LIBRARY})
